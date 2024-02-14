@@ -28,6 +28,21 @@ class Ball{
         ctx.arc(this.x, this.y, this.size, 0, 2*Math.PI);
         ctx.fill();
     }
+
+    update(){
+        if((this.x + this.size) >= width){
+            this.velX = -(this.velX);
+        }
+        if((this.x - this.size) <= 0){
+            this.velX = -(this.velX);
+        }
+        if((this.y + this.size) >= height){
+            this.velY = -(this.velY);
+        }
+        if((this.y - this.size) <= 0){
+            this.velY = -(this.velY);
+        }
+    }
 }
 const testBall = new Ball(50, 100,4,4,"blue", 10);
 
@@ -35,3 +50,4 @@ testBall.x;
 testBall.size;
 testBall.color;
 testBall.draw();
+
