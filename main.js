@@ -42,6 +42,8 @@ class Ball{
         if((this.y - this.size) <= 0){
             this.velY = -(this.velY);
         }
+        this.x += this.velX;
+        this.y += this.velY;
     }
 }
 const testBall = new Ball(50, 100,4,4,"blue", 10);
