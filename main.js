@@ -45,6 +45,24 @@ class Ball{
         this.x += this.velX;
         this.y += this.velY;
     }
+
+    collisionDetect(){
+        for (const ball of balls){
+            if (this !== ball){
+                const dx = this.x - ball.x;
+                const dy = this.y - ball.y;
+                const distance = Math.sqrt(Math.pow(dx,2)+Math.pow(dy,2));
+
+                if (distance< this.size+ball.size){
+                    ball.velX = -(ball.velX)
+                    ball.velY = -(ball.velY)
+                    this.velX = -(this.velX)
+                    this.velY = -(this.velY)
+                    
+                }
+            }
+        }
+    }
 }
 const testBall = new Ball(50, 100,4,4,"blue", 10);
 
@@ -76,6 +94,7 @@ function loop(){
     for (const ball of balls){
         ball.draw();
         ball.update();
+        ball.collisionDetect();
     }
     requestAnimationFrame(loop);
 }
